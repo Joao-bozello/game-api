@@ -5,6 +5,7 @@ import { matchProviders } from './match.providers';
 import { DatabaseModule } from 'src/database/database.module';
 import { PlayerService } from 'src/player/player.service';
 import { PlayerModule } from 'src/player/player.module';
+import { Game } from 'src/game/entities/game.entity';
 
 @Module({
   controllers: [MatchController],

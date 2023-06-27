@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards, HttpException, HttpStatus } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards, HttpException, HttpStatus, Put } from '@nestjs/common';
 import { MatchService } from './match.service';
 import { CreateMatchDto } from './dto/create-match.dto';
 import { UpdateMatchDto } from './dto/update-match.dto';
@@ -41,7 +41,7 @@ export class MatchController {
     return this.matchService.findMatchsByWinner(+id);
   }
   @UseGuards(JwtAuthGuard)
-  @Patch(':id')
+  @Put(':id')
   update(@Param('id') id: string, @Body() updateMatchDto: UpdateMatchDto) {
     if(!updateMatchDto.winner){
       throw new HttpException('Toda partida deve conter um vencedor', HttpStatus.BAD_REQUEST);

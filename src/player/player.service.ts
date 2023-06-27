@@ -21,13 +21,12 @@ export class PlayerService {
   }
 
   findOne(id: number) {
-  return this.playerRepository.find(
+  return this.playerRepository.findOne(
     {
     
           where: {
               id:id
-          },
-          take: 1 
+          }
       })
 
   }

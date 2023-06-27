@@ -31,13 +31,11 @@ export class MatchService {
   })
 }
 findMatchsByWinner(id: number) {
-  return this.matchRepository.findAndCount(  {
-    
-    where: {
-        game:id
-    },
- 
-});
+  return this.matchRepository  .createQueryBuilder("match")
+  .leftJoinAndSelect("match.winner", "winner")
+  .leftJoinAndSelect("match.game", "game")
+  .where('match.game = :id', { id: id })
+  .getMany()
 }
 
   update(id: number, updateMatchDto: UpdateMatchDto) {
